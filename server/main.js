@@ -1,15 +1,17 @@
-console.log('===== run main.ts =====');
-const http = require('http');
+const express = require("express");
+const bodyParser = require("body-parser");
+const book = require("./book");
 
-const host = 'localhost';
-const port = 8000;
+const app = express();
+const port = 3000;
 
-const requestListener = (req, res) => {
-    res.writeHead(200);
-    res.end('Request Listener server');
-}
+app.use(bodyParser.json());
+app.use("/book", book);
 
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-    console.log('Server is running on', `http://${host}:${port}`);
-})
+app.get("/", (req, res) => {
+  res.send("Hello Express!");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on https://localhost:${port}/`);
+});
