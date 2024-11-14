@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const book = require("./book");
+const bookRest = require("./book/book.rest");
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
 app.use("/book", book);
+app.use("/book/rest", bookRest);
 
 app.get("/", (req, res) => {
   res.send("Hello Express!");
