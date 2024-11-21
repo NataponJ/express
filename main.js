@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const book = require("./book");
-const bookRest = require("./book/book.rest");
+const book = require("./server/book");
+const bookRest = require("./server/book/book.rest");
 
 const app = express();
 const port = 3000;
